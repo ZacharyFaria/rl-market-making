@@ -1,0 +1,25 @@
+experiment:
+  name: "double_dqn_almgren_chriss_execution"
+  seed: 42
+  trial_count: 60
+
+execution:
+  parent_order_shares: 1000
+  horizon_steps: 25
+  initial_mid: 100.0
+  sigma: 0.30
+  temp_impact_eta: 0.00025
+  perm_impact_kappa: 0.00008
+  risk_aversion_lambda: 0.0015
+  queue_bias_k: -0.40
+  latency_min_ms: 5
+  latency_max_ms: 50
+
+dqn:
+  hidden_dim: 64
+  learning_rate: 0.002
+  discount_gamma: 0.99
+  target_sync_steps: 20
+  episodes: 120
+  num_Evaluating_episodes: 50
+

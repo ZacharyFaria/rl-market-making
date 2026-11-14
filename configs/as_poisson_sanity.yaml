@@ -1,0 +1,22 @@
+experiment:
+  name: "avellaneda_stoikov_poisson_sanity_check"
+  seed: 42
+  trial_count: 25
+
+environment:
+  regime: "poisson_zero_latency"
+  initial_mid: 100.0
+  sigma: 0.20
+  gamma: 0.10
+  k_intensity: 1.50
+  baseline_A: 140.0
+  horizon_sec: 1.0
+  n_steps: 100
+  max_inventory: 1000
+  latency_min_ms: 0
+  latency_max_ms: 0
+
+sanity_check:
+  tolerance_pct: 0.02
+  training_episodes: 160
+  learning_rate: 0.035

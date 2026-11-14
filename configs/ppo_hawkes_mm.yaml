@@ -1,0 +1,37 @@
+experiment:
+  name: "ppo_hawkes_market_making"
+  seed: 42
+  trial_count: 80
+
+environment:
+  regime: "hawkes"
+  initial_mid: 100.0
+  sigma: 0.25
+  gamma: 0.10
+  k_intensity: 1.50
+  baseline_A: 120.0
+  hawkes_alpha: 45.0
+  hawkes_beta: 110.0
+  queue_bias_k: -0.45
+  horizon_sec: 1.0
+  n_steps: 100
+  max_inventory: 1000
+  inventory_penalty_eta: 0.002
+  latency_min_ms: 5
+  latency_max_ms: 50
+
+ppo:
+  hidden_dim: 64
+  learning_rate: 0.001
+  clip_eps: 0.20
+  gae_lambda: 0.95
+  discount_gamma: 0.99
+  episodes: 120
+  enforce_as_sanity_gate: true
+
+evaluation:
+  cpcv_groups: 6
+  cpcv_test_groups: 2
+  embargo_hours: 24.0
+  eval_episodes: 60
+

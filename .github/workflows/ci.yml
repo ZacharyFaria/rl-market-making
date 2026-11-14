@@ -1,0 +1,38 @@
+name: CI — RL Market Making & Optimal Execution Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Run unit & HJB/RL invariant tests
+        run: |
+          pytest -v
+
+      - name: Verify CLI dry-run execution
+        run: |
+          rlmm --help
+          rlmm sanity-check --config configs/as_poisson_sanity.yaml
+          rlmm train --config configs/ppo_hawkes_mm.yaml --dry-run
+          rlmm execute --config configs/dqn_almgren_execution.yaml --dry-run
+

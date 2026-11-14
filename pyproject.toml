@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rlmm"
+version = "1.0.0"
+description = "Optimal Execution and Market Making via Deep Reinforcement Learning, Avellaneda-Stoikov HJB Control, and Hawkes Process LOB Simulation"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+    { name = "Zachary Faria" }
+]
+keywords = [
+    "quantitative-finance",
+    "market-making",
+    "optimal-execution",
+    "reinforcement-learning",
+    "avellaneda-stoikov",
+    "almgren-chriss",
+    "hawkes-process",
+    "ppo",
+    "double-dqn"
+]
+dependencies = [
+    "numpy>=1.24.0",
+    "scipy>=1.10.0",
+    "pandas>=2.0.0",
+    "torch>=2.1.0",
+    "pyyaml>=6.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "ruff>=0.3.0"
+]
+
+[project.scripts]
+rlmm = "src.cli.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short"
+
