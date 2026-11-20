@@ -112,8 +112,8 @@ def run_poisson_sanity_check(
     k: float = 1.50,
     baseline_A: float = 140.0,
     horizon_sec: float = 1.0,
-    episodes: int = 120,
-    learning_rate: float = 0.02,
+    episodes: int = 160,
+    learning_rate: float = 0.04,
     seed: int = 42,
 ) -> dict[str, Any]:
     """Train a policy in the zero-latency Poisson regime and verify AS convergence within 2%.

@@ -109,7 +109,7 @@ def run_train_cmd(cfg: dict[str, Any], dry_run: bool = False) -> dict[str, Any]:
         gamma=float(env_cfg.get("gamma", 0.10)),
         sigma=float(env_cfg.get("sigma", 0.25)),
         k=float(env_cfg.get("k_intensity", 1.50)),
-        episodes=60 if dry_run else 140,
+        episodes=160,
         seed=seed,
     )
     if not sanity["passed"]:
